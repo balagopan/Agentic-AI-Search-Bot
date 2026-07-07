@@ -2,6 +2,7 @@
 
 "use client"
 
+import React from 'react'
 import Header from '@/components/Header';
 import InputBar from '@/components/InputBar';
 import MessageArea from '@/components/MessageArea';
@@ -34,7 +35,7 @@ const Home = () => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [checkpointId, setCheckpointId] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (currentMessage.trim()) {
       // First add the user message to the chat
@@ -73,7 +74,7 @@ const Home = () => {
         ]);
 
         // Create URL with checkpoint ID if it exists
-        let url = `http://localhost:8000/chat_stream/${encodeURIComponent(userInput)}`;
+        let url = `https://agentic-ai-search-bot.onrender.com/chat_stream/${encodeURIComponent(userInput)}`;
         if (checkpointId) {
           url += `?checkpoint_id=${encodeURIComponent(checkpointId)}`;
         }
