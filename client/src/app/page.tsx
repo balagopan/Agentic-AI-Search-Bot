@@ -7,20 +7,12 @@ import Header from '@/components/Header';
 import InputBar from '@/components/InputBar';
 import MessageArea from '@/components/MessageArea';
 import { useState } from 'react';
+import { Message } from '@/types';
 
 interface SearchInfo {
   stages: string[];
   query: string;
   urls: string[];
-}
-
-interface Message {
-  id: number;
-  content: string;
-  isUser: boolean;
-  type: string;
-  isLoading?: boolean;
-  searchInfo?: SearchInfo;
 }
 
 const Home = () => {

@@ -1,4 +1,16 @@
 import React from 'react';
+import { Message } from '@/types';
+
+interface SearchInfo {
+  stages: any;
+  query: any;
+  urls: any;
+  error: any;
+}
+
+interface MessageAreaProps {
+  messages: Message[];
+}
 
 const PremiumTypingAnimation = () => {
     return (
@@ -15,7 +27,7 @@ const PremiumTypingAnimation = () => {
     );
 };
 
-const SearchStages = ({ searchInfo }) => {
+const SearchStages = ({ searchInfo }: { searchInfo: SearchInfo | null }) => {
     if (!searchInfo || !searchInfo.stages || searchInfo.stages.length === 0) return null;
 
     return (
@@ -105,7 +117,7 @@ const SearchStages = ({ searchInfo }) => {
     );
 };
 
-const MessageArea = ({ messages }) => {
+const MessageArea = ({ messages }: MessageAreaProps) => {
     return (
         <div className="flex-grow overflow-y-auto bg-[#FCFCF8] border-b border-gray-100" style={{ minHeight: 0 }}>
             <div className="max-w-4xl ml-1 p-6">
