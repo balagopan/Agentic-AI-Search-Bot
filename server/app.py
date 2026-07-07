@@ -159,7 +159,7 @@ async def generate_respose(message:str,checkpoint_id:Optional[str]=None):
     # print(events)  
     yield f"data: {{\"type\": \"end\"}}\n\n"
 
-@app.get("/chat/{message}")
+@app.get("/chat/{message}", include_in_schema=True)
 async def chat_stream(message: str, checkpoint_id: Optional[str] = Query(None)):
     return StreamingResponse(
         generate_respose(message, checkpoint_id), 

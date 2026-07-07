@@ -66,7 +66,7 @@ const Home = () => {
         ]);
 
         // Create URL with checkpoint ID if it exists
-        let url = `https://agentic-ai-search-bot.onrender.com/chat_stream/${encodeURIComponent(userInput)}`;
+        let url = `https://agentic-ai-search-bot.onrender.com/chat/${encodeURIComponent(userInput)}`;
         if (checkpointId) {
           url += `?checkpoint_id=${encodeURIComponent(checkpointId)}`;
         }
