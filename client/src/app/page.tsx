@@ -6,7 +6,7 @@ import React from 'react'
 import Header from '@/components/Header';
 import InputBar from '@/components/InputBar';
 import MessageArea from '@/components/MessageArea';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface SearchInfo {
   stages: string[];
