@@ -82,7 +82,7 @@ const Home = () => {
         // Connect to SSE endpoint using EventSource
         const eventSource = new EventSource(url);
         let streamedContent = "";
-        let searchData = null;
+        let searchData: any = null;;
         let hasReceivedContent = false;
 
         // Process incoming messages
