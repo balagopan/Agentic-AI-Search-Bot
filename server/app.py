@@ -62,7 +62,6 @@ agent=graph.compile(checkpointer=Memory)
 
 app = FastAPI()
 
-# Add CORS middleware with settings that match frontend requirements
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
