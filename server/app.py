@@ -24,7 +24,7 @@ load_dotenv()
 search_tool = TavilySearch(max_results=5)
 tools = [search_tool]
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash")
 llm_with_tool = llm.bind_tools(tools=tools)
 
 prompt = ChatPromptTemplate([
@@ -60,7 +60,6 @@ agent = graph.compile(checkpointer=Memory)
 
 app = FastAPI()
 
-# Configured to allow Next.js local (port 3000) or production connections
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
@@ -75,7 +74,6 @@ async def generate_response(message: str, checkpoint_id: Optional[str] = None):
         new_checkpoint_id = str(uuid4())
         config = {"configurable": {"thread_id": new_checkpoint_id}}
         
-        # Initialize conversation thread
         events = agent.astream_events({
             "messages": [HumanMessage(content=message)]
         }, version="v2", config=config)
@@ -133,8 +131,6 @@ async def chat_stream(message: str, checkpoint_id: Optional[str] = Query(None)):
         media_type="text/event-stream"
     )
 
-
-# FRONTEND_BUILD_DIR = "../client/out"
 FRONTEND_BUILD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "client", "out"))
 
 # @app.get("/{full_path:path}")
@@ -159,9 +155,7 @@ if os.path.exists(next_assets_dir):
 async def serve_frontend(full_path: str):
     file_path = os.path.join(FRONTEND_BUILD_DIR, full_path)
     
-    # If the requested file actually exists in your 'out' folder
     if os.path.isfile(file_path):
-        # Force the correct MIME types so the browser accepts them
         media_type = None
         if full_path.endswith(".css"):
             media_type = "text/css"
@@ -170,6 +164,5 @@ async def serve_frontend(full_path: str):
             
         return FileResponse(file_path, media_type=media_type)
     
-    # Otherwise, fall back to index.html (for client-side routing)
     index_path = os.path.join(FRONTEND_BUILD_DIR, "index.html")
     return FileResponse(index_path)

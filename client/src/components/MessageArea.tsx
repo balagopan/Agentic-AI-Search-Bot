@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Message } from '@/types';
 
 interface SearchInfo {
@@ -118,36 +118,47 @@ const SearchStages = ({ searchInfo }: { searchInfo: SearchInfo | null }) => {
 };
 
 const MessageArea = ({ messages }: MessageAreaProps) => {
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+    
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+    
     return (
         <div className="flex-grow overflow-y-auto bg-[#FCFCF8] border-b border-gray-100" style={{ minHeight: 0 }}>
             <div className="w-full p-6">
                 {messages.map((message) => (
                     <div key={message.id} className={`w-full flex ${message.isUser ? 'justify-end' : 'justify-start'} mb-5`}>
                         <div className="flex flex-col max-w-md">
-                            {/* Search Status Display - Now ABOVE the message */}
-                            {!message.isUser && message.searchInfo && (
+                            
+                            {/* 1. Search Status Display (I put this back for you!) */}
+                            {!message.isUser && message.searchInfo && !message.content && (
                                 <SearchStages searchInfo={message.searchInfo} />
                             )}
 
-                            {/* Message Content */}
-                            <div
-                                className={`rounded-lg py-3 px-5 ${message.isUser
-                                    ? 'bg-[#334155] text-white rounded-br-none shadow-md'
-                                    : 'bg-[#F3F3EE] text-gray-800 border border-gray-200 rounded-bl-none shadow-sm'
-                                    }`}
-                            >
-                                {message.isLoading ? (
+                            {/* 2. Typing Animation */}
+                            {!message.isUser && !message.content && (
+                                <div className="bg-[#F3F3EE] border border-gray-200 rounded-lg rounded-bl-none py-4 px-5 shadow-sm w-fit mt-2">
                                     <PremiumTypingAnimation />
-                                ) : (
-                                    message.content || (
-                                        // Fallback if content is empty but not in loading state
-                                        <span className="text-gray-400 text-xs italic">Waiting for response...</span>
-                                    )
-                                )}
-                            </div>
+                                </div>
+                            )}
+                            
+                            {/* 3. Actual Message Content */}
+                            {message.content && (
+                                <div
+                                    className={`rounded-lg py-3 px-5 ${message.isUser
+                                        ? 'bg-[#334155] text-white rounded-br-none shadow-md mt-0'
+                                        : 'bg-[#F3F3EE] text-gray-800 border border-gray-200 rounded-bl-none shadow-sm mt-2'
+                                        }`}
+                                >
+                                    <span>{message.content}</span>
+                                </div>
+                            )}
+                            
                         </div>
                     </div>
                 ))}
+                <div ref={messagesEndRef} />
             </div>
         </div>
     );
