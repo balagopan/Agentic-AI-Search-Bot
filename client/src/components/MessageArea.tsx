@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Message } from '@/types';
+import ReactMarkdown from 'react-markdown';
 
 interface SearchInfo {
   stages: any;
@@ -151,7 +152,9 @@ const MessageArea = ({ messages }: MessageAreaProps) => {
                                         : 'bg-[#F3F3EE] text-gray-800 border border-gray-200 rounded-bl-none shadow-sm mt-2'
                                         }`}
                                 >
-                                    <span>{message.content}</span>
+                                    <div className="prose prose-sm max-w-none text-current">
+                                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                                    </div>
                                 </div>
                             )}
                             
