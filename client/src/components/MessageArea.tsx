@@ -43,7 +43,7 @@ const SearchStages = ({ searchInfo }: { searchInfo: SearchInfo | null }) => {
 
                         {/* Connecting line to next item if reading exists */}
                         {searchInfo.stages.includes('reading') && (
-                            <div className="absolute -left-[7px] top-3 w-0.5 h-[calc(100%+1rem)] bg-gradient-to-b from-teal-300 to-teal-200"></div>
+                            <div className="absolute -left-1.75 top-3 w-0.5 h-[calc(100%+1rem)] bg-linear-to-b from-teal-300 to-teal-200"></div>
                         )}
 
                         <div className="flex flex-col">
@@ -77,12 +77,12 @@ const SearchStages = ({ searchInfo }: { searchInfo: SearchInfo | null }) => {
                                     <div className="flex flex-wrap gap-2">
                                         {Array.isArray(searchInfo.urls) ? (
                                             searchInfo.urls.map((url, index) => (
-                                                <div key={index} className="bg-gray-100 text-xs px-3 py-1.5 rounded border border-gray-200 truncate max-w-[200px] transition-all duration-200 hover:bg-gray-50">
+                                                <div key={index} className="bg-gray-100 text-xs px-3 py-1.5 rounded border border-gray-200 truncate max-w-50 transition-all duration-200 hover:bg-gray-50">
                                                     {typeof url === 'string' ? url : JSON.stringify(url).substring(0, 30)}
                                                 </div>
                                             ))
                                         ) : (
-                                            <div className="bg-gray-100 text-xs px-3 py-1.5 rounded border border-gray-200 truncate max-w-[200px] transition-all duration-200 hover:bg-gray-50">
+                                            <div className="bg-gray-100 text-xs px-3 py-1.5 rounded border border-gray-200 truncate max-w-50 transition-all duration-200 hover:bg-gray-50">
                                                 {typeof searchInfo.urls === 'string' ? searchInfo.urls.substring(0, 30) : JSON.stringify(searchInfo.urls).substring(0, 30)}
                                             </div>
                                         )}
@@ -126,7 +126,7 @@ const MessageArea = ({ messages }: MessageAreaProps) => {
     }, [messages]);
     
     return (
-        <div className="flex-grow overflow-y-auto bg-[#FCFCF8] border-b border-gray-100" style={{ minHeight: 0 }}>
+        <div className="grow overflow-y-auto bg-[#FCFCF8] border-b border-gray-100" style={{ minHeight: 0 }}>
             <div className="w-full p-6">
                 {messages.map((message) => (
                     <div key={message.id} className={`w-full flex ${message.isUser ? 'justify-end' : 'justify-start'} mb-5`}>
