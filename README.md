@@ -1,4 +1,4 @@
-## Mizhavu Chat Bot
+## Agentic AI Search BOt
 
 Agentic AI Search Bot is a search agent that has the ability to search the internet using TavilySearch tool. It utilises Langgraph framework to develop the agentic workflow.
 
@@ -52,7 +52,7 @@ Navigate to the server folder and launch the FastAPI backend via Uvicorn:
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make to the Mizhavu Chatbot are **greatly appreciated**!
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make to the Agentic AI Search Bot are **greatly appreciated**!
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
