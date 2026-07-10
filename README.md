@@ -1,4 +1,6 @@
-## Agentic AI Search BOt
+## Agentic AI Search Bot
+
+🚀 **[Try the Live Application Here](https://agentic-ai-search-bot.onrender.com)**
 
 Agentic AI Search Bot is a search agent that has the ability to search the internet using TavilySearch tool. It utilises Langgraph framework to develop the agentic workflow.
 
