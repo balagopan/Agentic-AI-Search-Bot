@@ -9,6 +9,14 @@ Agentic AI Search Bot is a search agent that has the ability to search the inter
 * **Tavily Search:** Has the ability to search the internet using Tavily search tool.
 * **State-of-the-Art llm model:** Uses the `gemini-3.5-flash` model by Google.
 * **State Preservation & Memory:** Built-in persistence via LangGraph checkpointers preserves active session chat histories.
+
+* ## 🛠️ Tech Stack
+
+* **Frontend:** Next.js (React)
+* **Backend:** FastAPI (Python)
+* **AI Orchestration:** LangGraph & LangChain
+* **Vector Database:** ChromaDB
+* **LLM & Embeddings:** Google Gemini API
 ---
 
 ## 📦 Installation
